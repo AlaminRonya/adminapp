@@ -27,8 +27,10 @@ export class RegisterComponent {
     lastName: this.builder.control('', Validators.required),
     phone: this.builder.control('', Validators.required),
     email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
-    password: this.builder.control('', Validators.compose([Validators.required, Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}$')])),
-    cPassword: this.builder.control('', Validators.compose([Validators.required, Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}$')])),
+    password: this.builder.control('', Validators.required),
+    cPassword: this.builder.control('', Validators.required),
+    // password: this.builder.control('', Validators.compose([Validators.required, Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20}$')])),
+    // cPassword: this.builder.control('', Validators.compose([Validators.required, Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20}$')])),
   });
   proceedregister() {
     if (this.registerform.valid) {

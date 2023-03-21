@@ -16,6 +16,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+
 
 
 
@@ -40,6 +43,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatTableModule,
     MatDialogModule,
     MatRadioModule,
+    MatSidenavModule,
+    MatListModule,
   ]
 })
 export class MaterialModuleModule { }

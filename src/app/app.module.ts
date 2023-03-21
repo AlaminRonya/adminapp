@@ -10,6 +10,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserlistsComponent } from './users/userlists/userlists.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent,
+    UserlistsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
