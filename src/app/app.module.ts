@@ -13,6 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserlistsComponent } from './users/userlists/userlists.component';
 import { HomeComponent } from './home/home.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { AddProductComponent } from './product/add-product/add-product.component';
+import { AddBrandComponent } from './add-brand/add-brand.component';
+import { AddCategoryComponent } from './category/add-category/add-category.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
 
 
 @NgModule({
@@ -23,7 +28,12 @@ import { HomeComponent } from './home/home.component';
     RegisterComponent,
     DashboardComponent,
     UserlistsComponent,
-    HomeComponent
+    HomeComponent,
+    ProductListComponent,
+    AddProductComponent,
+    AddBrandComponent,
+    AddCategoryComponent,
+    CategoryListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,68 @@
+<div class="addBrandflex">
+    <mat-card class="mat-card-brand">
+        <mat-card-title>Add Brand</mat-card-title>
+        <mat-card-content>
+          <form >
+              <mat-form-field appearance="fill" class="inputField">
+                <mat-label>Brand Name</mat-label>
+                <input matInput  placeholder="Enter brand name">
+              </mat-form-field>
+              <!-- <mat-form-field appearance="fill" class="inputField">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput  placeholder="Enter your Last Name">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="inputField">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput  placeholder="Enter your Last Name">
+              </mat-form-field> -->
+              <mat-form-field appearance="fill" class="inputField">
+                <mat-label>MM/DD/YYYY</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matIconSuffix [for]="picker">
+                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+                
+              </mat-form-field>
+              
+              <mat-divider></mat-divider>
+              <div class="btn">
+                  <button mat-raised-button color="primary">Submit</button>
+                  
+              </div>
+              
+            </form>
+        </mat-card-content>
+      </mat-card>
+    
+    <!-- <form>
+        <mat-form-field appearance="fill" class="inputField">
+            <mat-label>Brand Name</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="inputField">
+            <mat-label>Brand Name</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="inputField">
+            <mat-label>Brand Name</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="inputField">
+            <mat-label>Brand Name</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        
+        <div class="btn" style="align-items: center;">
+            <button mat-raised-button color="primary" >Add Brand</button>
+            
+        </div>
+    </form> -->
+</div>
+
+  
