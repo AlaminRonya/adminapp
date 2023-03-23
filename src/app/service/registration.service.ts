@@ -8,7 +8,7 @@ import { RequestUserDTO } from '../interface/request-user-dto';
   providedIn: 'root'
 })
 export class RegistrationService {
-  private apiServerUrl = environment.apiBaseUrl;
+  private readonly apiServerUrl = environment.apiBaseUrl;
 
   constructor(private http : HttpClient) { }
 

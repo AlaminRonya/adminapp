@@ -18,6 +18,7 @@ import { AddProductComponent } from './product/add-product/add-product.component
 import { AddBrandComponent } from './add-brand/add-brand.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CategoryListComponent } from './category/category-list/category-list.co
     MaterialModuleModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

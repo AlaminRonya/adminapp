@@ -2,10 +2,14 @@
     <mat-card class="mat-card-brand">
         <mat-card-title>Add Brand</mat-card-title>
         <mat-card-content>
-          <form >
+          <form [formGroup]="registerform" (ngSubmit)="preprocess()">
               <mat-form-field appearance="fill" class="inputField">
                 <mat-label>Brand Name</mat-label>
-                <input matInput  placeholder="Enter brand name">
+                <input matInput formControlName="brandName" placeholder="Enter brand name">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="inputField">
+                <mat-label>Slug</mat-label>
+                <input matInput formControlName="slug" placeholder="Enter slug">
               </mat-form-field>
               <!-- <mat-form-field appearance="fill" class="inputField">
                   <mat-label>Last Name</mat-label>
@@ -17,15 +21,17 @@
               </mat-form-field> -->
               <mat-form-field appearance="fill" class="inputField">
                 <mat-label>MM/DD/YYYY</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input formControlName="createdAt"  matInput [matDatepicker]="picker">
                 <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
                 <mat-datepicker-toggle matIconSuffix [for]="picker">
                   <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
                 </mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-
-                
               </mat-form-field>
+
+              <section >
+                <mat-checkbox formControlName="checked"  [(ngModel)]="checked" >Active</mat-checkbox>
+              </section>
               
               <mat-divider></mat-divider>
               <div class="btn">
