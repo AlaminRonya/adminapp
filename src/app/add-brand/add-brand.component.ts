@@ -1,9 +1,12 @@
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, startWith, throwError } from 'rxjs';
+import { DataState } from '../enum/data-state';
+import { AppState } from '../interface/app-state';
 import { Brand } from '../interface/brand';
+import { ResponseBrand } from '../interface/response-brand';
 import { BrandServiceService } from '../service/brand-service.service';
 
 @Component({
@@ -11,9 +14,21 @@ import { BrandServiceService } from '../service/brand-service.service';
   templateUrl: './add-brand.component.html',
   styleUrls: ['./add-brand.component.css']
 })
-export class AddBrandComponent {
+export class AddBrandComponent implements OnInit {
   checked = true;
+  
   constructor(private builder : FormBuilder, private router: Router, private service: BrandServiceService){}
+  ngOnInit(): void {
+    this.service.getBrand().pipe(
+      catchError((error: HttpErrorResponse) => {
+      alert(error.message);
+      return throwError(error);
+    })).subscribe((response: ResponseBrand) => {
+      console.log(response.data);
+      console.log(response.message);
+    });
+
+  }
 
   registerform = this.builder.group({
     brandName: this.builder.control('', Validators.required),
@@ -35,11 +50,16 @@ export class AddBrandComponent {
         // if(response instanceof Response){
         //   alert();
         // }
-        alert("Insert success!");
+        
+        var d = JSON.parse(JSON.stringify(response));
+
+        alert("Insert success!" +  d['message']);
         
         // this.router.navigate(['login'])
         // addForm.reset();
       });
+
+     
 
     }else{
 
