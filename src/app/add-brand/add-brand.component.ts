@@ -16,6 +16,24 @@ import { BrandServiceService } from '../service/brand-service.service';
 })
 export class AddBrandComponent implements OnInit {
   checked = true;
+   brandList: { id: number,
+    brandName: string,
+    slug: string,
+    isActive: boolean,
+    createdAt: Date | null,
+    updatedAt: Date | null }[] = [];
+
+  // list: {id: number, list: {
+  //   id: number,
+  //   brandName: string,
+  //   slug: string,
+  //   isActive: boolean,
+  //   createdAt: Date | null,
+  //   updatedAt: Date | null 
+  // }[]}[] = [];
+
+
+  // brandArray: Array<Brand>;
   
   constructor(private builder : FormBuilder, private router: Router, private service: BrandServiceService){}
   ngOnInit(): void {
@@ -24,8 +42,31 @@ export class AddBrandComponent implements OnInit {
       alert(error.message);
       return throwError(error);
     })).subscribe((response: ResponseBrand) => {
-      console.log(response.data);
-      console.log(response.message);
+      // var value = Array(response.data['brand'][0]);
+      // value.array.forEach(element => {
+        
+      // });
+      
+      // this.brandList.push(response.data['brand'] as Brand);
+      // this.brandList.forEach(v=>console.log("------>"+v));
+      var v = JSON.stringify(response.data['brand'])
+      // for(var value of response.data['brand']){
+      //   console.log("---->"+value);
+      // }
+      var v1 = response.data['brand'];
+      console.log(v);
+      console.log("******************");
+      for(var t in response.data['brand']){
+        console.log("====="+t);
+      }
+      
+      
+      response.data.brand;
+      console.log("******************");
+      // console.log(response.data?[0]);
+      console.log("===>"+typeof response.data['brand']);
+
+
     });
 
   }
