@@ -1,23 +1,23 @@
-.addBrandflex {
+.addCategoryflex {
     display: flex;
     justify-content: center;
     margin-top: 20px;
     
 }
-.mat-card-brand{
+.mat-card-add-category{
     width: 80%;
     max-width: 500px;
 }
-form {
+.addCategoryForm {
     max-width: 400px;
     margin: auto;
   }
-.inputField{
+.inputFieldCategory{
     width: 100%;
     display: block;
 }
 
-mat-card-title{
+.category-title{
     text-align: center;
     align-content: center;
     margin-bottom: 18px;

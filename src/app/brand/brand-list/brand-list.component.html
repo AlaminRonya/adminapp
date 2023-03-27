@@ -4,7 +4,7 @@
       <input matInput placeholder="Search" #input>
     </mat-form-field>
     <div class="demo-button-container" style=" width: 20%; align-items: end;">
-      <button mat-raised-button  class="demo-button" style=" align-items: end; display: block; align-content: end;">Add Category</button>
+      <button mat-raised-button  class="demo-button" style=" align-items: end; display: block; align-content: end;">Add Brand</button>
       <!-- <button mat-raised-button class="demo-button">Remove data</button> -->
     </div>
     
@@ -25,31 +25,26 @@
             <th scope="col">Slug</th>
             <th scope="col">Craeted Date</th>
             <th scope="col">Updated Date</th>
-            <th scope="col">Deleted Date</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        <!-- <tr *ngFor="let user of users">
-            <td>{{ user.name }}</td>
-            <td>{{ user.occupation }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.bio }}</td>
-            <td> <button (click)="userDetails(user.id)" class='btn btn-info' data-toggle="modal"
-                    data-target="#myModal">Details</button> </td>
-        </tr> -->
+        <tr *ngFor="let brand of brands">
+            <td>{{ brand.brandName }}</td>
+            <td>{{ brand.slug }}</td>
+            <td>{{ brand.createdAt }}</td>
+            <td>{{ brand.updatedAt }}</td>
+           
+            <td> <button (click)="deletedBrand(brand.id)" class='btn btn-info' data-toggle="modal"
+                    data-target="#myModal">Delete</button> </td> 
+        </tr>
     </tbody>
 </table>
 
 
 
 
-<ul>
-    <li *ngFor="let brand of brands">
-      {{ brand.brandName }}
-    </li>
-  </ul>
-  
+
  
   
   

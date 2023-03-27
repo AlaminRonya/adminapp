@@ -1,39 +1,46 @@
-<div class="addBrandflex">
-    <mat-card class="mat-card-brand">
-        <mat-card-title>Add Category</mat-card-title>
+<div class="addCategoryflex">
+    <mat-card class="mat-card-add-category">
+        <mat-card-title class="category-title">Add Category</mat-card-title>
         <mat-card-content>
-          <form >
+          <form class="addCategoryForm" [formGroup]="addCategoryForm" (ngSubmit)="preprocess()">
 
-              <mat-form-field appearance="fill" class="inputField">
+              <!-- <mat-form-field appearance="fill" class="inputField">
                 <mat-label>Brand Select</mat-label>
                 <mat-select>
                   <mat-option value="one">First option</mat-option>
                   <mat-option value="two">Second option</mat-option>
                 </mat-select>
-              </mat-form-field>
-              <!-- <mat-form-field appearance="fill" class="inputField">
-                <mat-label>Brand Name</mat-label>
-                <input matInput  placeholder="Enter brand name">
               </mat-form-field> -->
-              <mat-form-field appearance="fill" class="inputField">
-                  <mat-label>Category Name</mat-label>
-                  <input matInput  placeholder="Enter your category Name">
+
+              <mat-form-field appearance="fill" class="inputFieldCategory">
+                <mat-label>Category Name</mat-label>
+                <input type="text" formControlName="slug" matInput  placeholder="Enter brand name">
               </mat-form-field>
+              <mat-form-field appearance="fill" class="inputFieldCategory">
+                  <mat-label>Sub Category Name</mat-label>
+                  <input type="text" formControlName="subSlug" matInput  placeholder="Enter your category Name">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="inputFieldCategory">
+                <mat-label>Position number</mat-label>
+                <input type="number" formControlName="position" matInput  placeholder="Enter your category Name">
+            </mat-form-field>
               <!-- <mat-form-field appearance="fill" class="inputField">
                   <mat-label>Phone Number</mat-label>
                   <input matInput  placeholder="Enter your Last Name">
               </mat-form-field> -->
-              <mat-form-field appearance="fill" class="inputField">
+              <!-- <mat-form-field appearance="fill" class="inputField">
                 <mat-label>MM/DD/YYYY</mat-label>
                 <input matInput [matDatepicker]="picker">
-                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
                 <mat-datepicker-toggle matIconSuffix [for]="picker">
                   <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
                 </mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field> -->
 
-                
-              </mat-form-field>
+              <section >
+                <mat-checkbox formControlName="isActive" [(ngModel)]="isActive" >Active</mat-checkbox>
+                <mat-checkbox formControlName="isSearchable"  [(ngModel)]="isSearchable" >Searchable</mat-checkbox>
+              </section>
               
               <mat-divider></mat-divider>
               <div class="btn">

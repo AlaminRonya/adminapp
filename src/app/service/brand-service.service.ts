@@ -50,4 +50,12 @@ export class BrandServiceService {
     );
   }
 
+  public deletedBrand(id: number): Observable<any>{
+    console.log("==================="+id);
+    return this.http.delete<any>(`${this.apiServerUrl}/api/v1/users/brands/${id}`).pipe(
+      tap(console.log),
+      catchError(this.handleError)
+    );
+  }
+
 }
