@@ -24,5 +24,45 @@
 
 <mat-divider></mat-divider>
 
+<table class="table" id='tab'>
+  <thead>
+      <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Category Name</th>
+          <th scope="col">Perent ID</th>
+          <th scope="col">Position</th>
+          <th scope="col">Searchable</th>
+          <th scope="col">Active</th>
+          <th scope="col">Created Date</th>
+          <th scope="col">Updated Date</th>
+          <th>Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let category of categories">
+          <td>{{ category.id }}</td>
+          <td>{{ category.slug}}</td>
+          <td>{{ category.parent}}</td>
+          <td>{{ category.position}}</td>
+          <td>{{ category.isSearchable}}</td>
+          <td>{{ category.isActive}}</td>
+          <td>{{ category.createdAt}}</td>
+          <td>{{ category.updatedAt}}</td>
+
+
+          <!-- <td>{{ category.createdAt }}</td>
+          <td>{{ category.updatedAt }}</td> -->
+          <!-- (click)="deletedBrand(brand.id)"  -->
+         
+          <td> 
+            <button class='btn btn-info' data-toggle="modal"
+                  data-target="#myModal">Update</button> 
+                  <button (click)="deleted(category.slug)"  class='btn btn-info' data-toggle="modal"
+                  data-target="#myModal">Delete</button>
+          </td> 
+      </tr>
+  </tbody>
+</table>
+
 
 

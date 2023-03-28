@@ -1,7 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 import { RequestCategoryDTO } from 'src/app/interface/request-category-dto';
+import { CategoryServiceService } from 'src/app/service/category-service.service';
 
 @Component({
   selector: 'app-add-category',
@@ -11,7 +14,7 @@ import { RequestCategoryDTO } from 'src/app/interface/request-category-dto';
 export class AddCategoryComponent {
   isSearchable = true;
   isActive = false;
-  constructor(private builder : FormBuilder, private router: Router){}
+  constructor(private builder : FormBuilder, private router: Router, private categoryService: CategoryServiceService){}
 
   addCategoryForm = this.builder.group({
     slug: this.builder.control('', Validators.required),
@@ -26,27 +29,16 @@ export class AddCategoryComponent {
   preprocess(){
     
     if (this.addCategoryForm.valid){
-
-      console.log("Value: "+this.addCategoryForm.value.position);
-      // this.service.addBrand(this.addCategoryForm.value as Brand).pipe(
-      //   catchError((error: HttpErrorResponse) => {
-      //     alert(error.message);
-      //     return throwError(error);
-      //   })
-      // ).subscribe((response: Response) => {
-      //   // if(response instanceof Response){
-      //   //   alert();
-      //   // }
-        
-      //   var d = JSON.parse(JSON.stringify(response));
-
-      //   alert("Insert success!" +  d['message']);
-        
-      //   // this.router.navigate(['login'])
-      //   // addForm.reset();
-      // });
-
-     
+      var dto = this.addCategoryForm.value as RequestCategoryDTO;
+      this.categoryService.add(dto).pipe(
+        catchError((error: HttpErrorResponse) => {
+          alert(error.message);
+          return throwError(error);
+        })
+      ).subscribe((response: Response) => {
+        var d = JSON.parse(JSON.stringify(response));
+        alert("Insert success!" +  d['message']);
+      });
 
     }else{
 
