@@ -25,6 +25,14 @@ export class CategoryServiceService {
     );
   }
 
+  public getSearchSlug(slug: string): Observable<ResponseCategory>{
+    console.log("---->"+slug);
+    return this.http.get<ResponseCategory>(`${this.apiServerUrl}/api/v1/users/category/all/${slug}`).pipe(
+      tap(console.log),
+      catchError(this.handleError)
+    );
+  }
+
   public delete(slug: string): Observable<any>{
     console.log(slug);
     return this.http.delete<any>(`${this.apiServerUrl}/api/v1/users/category/${slug}`).pipe(
@@ -33,6 +41,12 @@ export class CategoryServiceService {
     );
   }
   
+  public update(slug1: string, slug2: string){
+    return this.http.put<any>(`${this.apiServerUrl}/api/v1/users/category/${slug1}/${slug2}`,slug1).pipe(
+      tap(console.log),
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error);

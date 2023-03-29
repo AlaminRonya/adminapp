@@ -1,0 +1,24 @@
+<div class="addCategoryflex">
+    <mat-card class="mat-card-add-category">
+        <mat-card-title class="category-title">{{slugName}}</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="updatedCategoryForm" (ngSubmit)="preprocess()">
+              <mat-form-field appearance="fill" class="inputFieldCategory">
+                <mat-label>Category Name</mat-label>
+                <input type="text"  formControlName="slug" matInput  placeholder="Enter category name">
+              </mat-form-field>
+              
+              
+              <mat-divider></mat-divider>
+              <div class="btn">
+                  <button mat-raised-button color="primary">Submit</button>
+                  
+              </div>
+              
+            </form>
+        </mat-card-content>
+      </mat-card>
+    
+    
+</div>
+

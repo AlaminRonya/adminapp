@@ -20,6 +20,7 @@ import { AddCategoryComponent } from './category/add-category/add-category.compo
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { FormsModule } from '@angular/forms';
 import { BrandListComponent } from './brand/brand-list/brand-list.component';
+import { UpdateCategoryComponent } from './category/update-category/update-category.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { BrandListComponent } from './brand/brand-list/brand-list.component';
     AddCategoryComponent,
     CategoryListComponent,
     BrandListComponent,
+    UpdateCategoryComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,8 @@ import { AddBrandComponent } from './add-brand/add-brand.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { BrandListComponent } from './brand/brand-list/brand-list.component';
+import { UpdateCategoryComponent } from './category/update-category/update-category.component';
+
 
 
 
@@ -30,6 +32,7 @@ const routes: Routes = [
   {path: "addCategory", component: AddCategoryComponent},
   {path: "categoryList", component: CategoryListComponent},
   {path: "brandList", component: BrandListComponent},
+  {path: "updateCategory", component: UpdateCategoryComponent},
 ];
 
 @NgModule({
