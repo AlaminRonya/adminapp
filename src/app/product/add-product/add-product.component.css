@@ -1,0 +1,36 @@
+.addProductflex {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+.mat-card-product{
+    width: 80%;
+    max-width: 500px;
+}
+.productForm {
+    max-width: 400px;
+    margin: auto;
+  }
+.inputField1{
+    width: 100%;
+    display: block;
+}
+
+mat-card-title{
+    text-align: center;
+    align-content: center;
+    margin-bottom: 18px;
+}
+
+/* .sectionFlat{
+    align-items: start;
+} */
+
+
+
+
+
+
+
+

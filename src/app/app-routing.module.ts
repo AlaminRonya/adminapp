@@ -11,6 +11,8 @@ import { AddCategoryComponent } from './category/add-category/add-category.compo
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { BrandListComponent } from './brand/brand-list/brand-list.component';
 import { UpdateCategoryComponent } from './category/update-category/update-category.component';
+import { AddProductComponent } from './product/add-product/add-product.component';
+
 
 
 
@@ -33,6 +35,7 @@ const routes: Routes = [
   {path: "categoryList", component: CategoryListComponent},
   {path: "brandList", component: BrandListComponent},
   {path: "updateCategory", component: UpdateCategoryComponent},
+  {path: "addProduct", component: AddProductComponent},
 ];
 
 @NgModule({

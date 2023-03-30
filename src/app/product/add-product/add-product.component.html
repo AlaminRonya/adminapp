@@ -1,1 +1,210 @@
-<p>add-product works!</p>
+<div class="addProductflex">
+  <mat-card class="mat-card-product">
+      <mat-card-title>Add Product</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="registerform" class="productForm" (ngSubmit)="preprocess()">
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Select Brand</mat-label>
+              <mat-select formControlName="brand">
+                <mat-option  value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Select Category</mat-label>
+              <mat-select formControlName="slug">
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Select Tax</mat-label>
+              <mat-select formControlName="taxClass">
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Product Name</mat-label>
+              <input formControlName="productName" matInput placeholder="Enter product name">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Product Price</mat-label>
+              <input type="number" formControlName="price"  matInput placeholder="Enter product price">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Product Special Price</mat-label>
+              <input type="number" formControlName="specialPrice" matInput placeholder="Enter product special price">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Product Special Price Type</mat-label>
+              <input type="text" formControlName="specialPriceType" matInput placeholder="Enter product special price type">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>MM/DD/YYYY</mat-label>
+              <input formControlName="specialPriceStart" matInput [matDatepicker]="picker1">
+              <mat-hint>Special Price Start</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker1">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+            
+
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>MM/DD/YYYY</mat-label>
+              <input formControlName="specialPriceEnd" matInput [matDatepicker]="picker2">
+              <mat-hint>Special Price End</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker2">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Product selling price</mat-label>
+              <input type="number" formControlName="sellingPrice" matInput placeholder="Enter product selling price">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Product sku</mat-label>
+              <input type="text" formControlName="sku" matInput placeholder="Enter product sku">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Product qty</mat-label>
+              <input type="number" formControlName="qty" matInput placeholder="Enter number of product qty">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>Product Viewer</mat-label>
+              <input type="number" formControlName="viewed" matInput placeholder="Enter number of product viewer">
+            </mat-form-field>
+
+            <!-- <mat-form-field appearance="fill" class="inputField">
+              <mat-label>MM/DD/YYYY</mat-label>
+              <input matInput [matDatepicker]="picker">
+              <mat-hint>Special Price Start</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
+
+
+
+
+            <!-- <section class="inputField">
+              <div class="row">
+                <div class="col-6">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Product Name</mat-label>
+                    <input matInput placeholder="Enter product name">
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Product Name</mat-label>
+                    <input matInput placeholder="Enter product name">
+                  </mat-form-field>
+                </div>
+              </div>
+            </section> -->
+
+            <!-- <div class="row">
+              <div class="col-6">
+                <mat-form-field appearance="fill" >
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput  placeholder="Enter your Last Name">
+                </mat-form-field> 
+              </div>
+              <div class="col-6">
+                <mat-form-field appearance="fill" >
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput  placeholder="Enter your Last Name">
+                </mat-form-field> 
+              </div>
+            </div> -->
+
+            
+            
+
+            
+            <!-- <mat-form-field appearance="fill" class="inputField">
+                <mat-label>Last Name</mat-label>
+                <input matInput  placeholder="Enter your Last Name">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="inputField">
+                <mat-label>Phone Number</mat-label>
+                <input matInput  placeholder="Enter your Last Name">
+            </mat-form-field> -->
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>MM/DD/YYYY</mat-label>
+              <input formControlName="newFrom" matInput [matDatepicker]="picker3">
+              <mat-hint>New From</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker3">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="inputField1">
+              <mat-label>MM/DD/YYYY</mat-label>
+              <input formControlName="newTo" matInput [matDatepicker]="picker4">
+              <mat-hint>New To</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker4">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker4></mat-datepicker>
+            </mat-form-field>
+
+            <section >
+              <mat-checkbox formControlName="isActive"  >Active</mat-checkbox>
+              <mat-checkbox  formControlName="manageStock" >Manage Stock</mat-checkbox>
+            </section>
+            <section >
+              <mat-checkbox  formControlName="inStock" >Stock</mat-checkbox>
+              <mat-checkbox  formControlName="virtualAt" >Virtual At</mat-checkbox>
+            </section>
+            <mat-divider></mat-divider>
+            <div class="btn">
+                <button mat-raised-button color="primary">Submit</button>
+                
+            </div>
+            
+          </form>
+      </mat-card-content>
+    </mat-card>
+  
+  <!-- <form>
+      <mat-form-field appearance="fill" class="inputField">
+          <mat-label>Brand Name</mat-label>
+          <input matInput placeholder="Placeholder">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="inputField">
+          <mat-label>Brand Name</mat-label>
+          <input matInput placeholder="Placeholder">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="inputField">
+          <mat-label>Brand Name</mat-label>
+          <input matInput placeholder="Placeholder">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="inputField">
+          <mat-label>Brand Name</mat-label>
+          <input matInput placeholder="Placeholder">
+      </mat-form-field>
+      
+      <div class="btn" style="align-items: center;">
+          <button mat-raised-button color="primary" >Add Brand</button>
+          
+      </div>
+  </form> -->
+</div>
+
