@@ -4,26 +4,43 @@
       <mat-card-content>
         <form [formGroup]="registerform" class="productForm" (ngSubmit)="preprocess()">
             <mat-form-field appearance="fill" class="inputField1">
-              <mat-label>Select Brand</mat-label>
+              <!-- <mat-label>Select Brand</mat-label>
               <mat-select formControlName="brand">
                 <mat-option  value="one">First option</mat-option>
                 <mat-option value="two">Second option</mat-option>
+              </mat-select> -->
+
+              <mat-label>Select Brand</mat-label>
+              <mat-select formControlName="brand">
+                    <mat-option *ngFor="let b of brandName" [value]="b">
+                      {{b}}
+                    </mat-option>
               </mat-select>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="inputField1">
               <mat-label>Select Category</mat-label>
               <mat-select formControlName="slug">
+                <mat-option *ngFor="let b of categoryName" [value]="b">
+                  {{b}}
+                </mat-option>
+              </mat-select>
+              <!-- <mat-select formControlName="slug">
                 <mat-option value="one">First option</mat-option>
                 <mat-option value="two">Second option</mat-option>
-              </mat-select>
+              </mat-select> -->
             </mat-form-field>
             <mat-form-field appearance="fill" class="inputField1">
               <mat-label>Select Tax</mat-label>
               <mat-select formControlName="taxClass">
+                <mat-option *ngFor="let b of taxClass" [value]="b">
+                  {{b}}
+                </mat-option>
+              </mat-select>
+              <!-- <mat-select formControlName="taxClass">
                 <mat-option value="one">First option</mat-option>
                 <mat-option value="two">Second option</mat-option>
-              </mat-select>
+              </mat-select> -->
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="inputField1">
@@ -170,10 +187,64 @@
               <mat-checkbox  formControlName="inStock" >Stock</mat-checkbox>
               <mat-checkbox  formControlName="virtualAt" >Virtual At</mat-checkbox>
             </section>
+            <mat-form-field class="inputField1">
+              <div>
+                <mat-toolbar>
+                  <input matInput [value]="selectedFileNames.length ? selectedFileNames : 'Select Images'" />
+            
+                  <!-- <button
+                    mat-flat-button
+                    color="primary"
+                    [disabled]="!selectedFiles"
+                    (click)="uploadFiles()"
+                  >
+                    Upload
+                  </button> -->
+                  <input
+                  type="file"
+                  id="fileInput"
+                  name="fileInput"
+                  accept="image/*" multiple 
+                  (change)="selectFiles($event)"
+                />
+                </mat-toolbar>
+            
+                <!-- <input
+                  type="file"
+                  id="fileInput"
+                  name="fileInput"
+                  accept="image/*" multiple 
+                  (change)="selectFiles($event)"
+                /> -->
+              </div>
+              
+            </mat-form-field>
+            <div>
+              <img *ngFor='let preview of previews' [src]="preview" class="preview">
+            </div>
+            
+            <div *ngIf="message.length" class="message">
+              <ul *ngFor="let msg of message; let i = index">
+                <li>{{ msg }}</li>
+              </ul>
+            </div>
+            
+            <mat-card class="list-card">
+              <mat-card-header>
+                <mat-card-title>List of Images</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-list role="list">
+                  <mat-list-item role="listitem" *ngFor="let image of imageInfos | async" class="list-item">
+                    <p matLine><a href="{{ image.url }}">{{ image.name }}</a></p>
+                    <img src="{{ image.url }}" alt="{{ image.name }}" height="50px"/>
+                  </mat-list-item>
+                </mat-list>
+              </mat-card-content>
+            </mat-card>
             <mat-divider></mat-divider>
             <div class="btn">
                 <button mat-raised-button color="primary">Submit</button>
-                
             </div>
             
           </form>
@@ -208,3 +279,39 @@
   </form> -->
 </div>
 
+<!-- <div *ngFor="let progressInfo of progressInfos">
+  <span>{{ progressInfo.fileName }}</span>
+  <mat-toolbar class="progress-bar">
+    <mat-progress-bar
+      color="accent"
+      [value]="progressInfo.value"
+    ></mat-progress-bar>
+    <span class="progress">{{ progressInfo.value }}%</span>
+  </mat-toolbar>
+</div> -->
+
+
+
+<!-- <div>
+  <img *ngFor='let preview of previews' [src]="preview" class="preview">
+</div>
+
+<div *ngIf="message.length" class="message">
+  <ul *ngFor="let msg of message; let i = index">
+    <li>{{ msg }}</li>
+  </ul>
+</div>
+
+<mat-card class="list-card">
+  <mat-card-header>
+    <mat-card-title>List of Images</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let image of imageInfos | async" class="list-item">
+        <p matLine><a href="{{ image.url }}">{{ image.name }}</a></p>
+        <img src="{{ image.url }}" alt="{{ image.name }}" height="50px"/>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card> -->
