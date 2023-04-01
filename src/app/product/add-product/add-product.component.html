@@ -12,8 +12,8 @@
 
               <mat-label>Select Brand</mat-label>
               <mat-select formControlName="brand">
-                    <mat-option *ngFor="let b of brandName" [value]="b">
-                      {{b}}
+                    <mat-option *ngFor="let brand of brands" [value]="brand.brandName">
+                      {{brand.brandName}}
                     </mat-option>
               </mat-select>
             </mat-form-field>
@@ -21,8 +21,8 @@
             <mat-form-field appearance="fill" class="inputField1">
               <mat-label>Select Category</mat-label>
               <mat-select formControlName="slug">
-                <mat-option *ngFor="let b of categoryName" [value]="b">
-                  {{b}}
+                <mat-option *ngFor="let category of categories" [value]="category.slug">
+                  {{category.slug}}
                 </mat-option>
               </mat-select>
               <!-- <mat-select formControlName="slug">
@@ -30,6 +30,7 @@
                 <mat-option value="two">Second option</mat-option>
               </mat-select> -->
             </mat-form-field>
+
             <mat-form-field appearance="fill" class="inputField1">
               <mat-label>Select Tax</mat-label>
               <mat-select formControlName="taxClass">

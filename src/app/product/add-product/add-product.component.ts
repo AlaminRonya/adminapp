@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Brand } from 'src/app/interface/brand';
+import { Category } from 'src/app/interface/category';
 import { FileHandle } from 'src/app/interface/file-handle';
 import { RequestProductDTO } from 'src/app/interface/request-product-dto';
+import { BrandServiceService } from 'src/app/service/brand-service.service';
+import { CategoryServiceService } from 'src/app/service/category-service.service';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit{
 
   brandName = ['Easy','av','dggf'];
   categoryName = ['Easy','av','dggf'];
@@ -27,8 +32,34 @@ export class AddProductComponent {
 
   previews: string[] = [];
   imageInfos?: Observable<any>;
+  
+  brands: Brand[] = [];
+  categories: Category[] = [];
 
-  constructor(private builder : FormBuilder, private router: Router, private sanitizer: DomSanitizer ){}
+  constructor(private builder : FormBuilder, private router: Router, private sanitizer: DomSanitizer, private brandService: BrandServiceService, private categoryService: CategoryServiceService ){}
+  ngOnInit(): void {
+    this.brandService.getBrand().subscribe(
+      (response) => {
+        this.brands = response.data.brands as Brand[];
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+
+    this.categoryService.getAll().subscribe(
+      (response) => {
+        this.categories.splice(0);
+
+        this.categories = response.data.categories as Category[];
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+
+
+  }
 
   registerform = this.builder.group({
     productName: this.builder.control('', Validators.required),
@@ -55,8 +86,11 @@ export class AddProductComponent {
   });
   
   public preprocess(){
+    
     if (this.registerform.valid){
-      // const dto: RequestProductDTO = this.registerform.value as RequestProductDTO;
+      console.log(this.registerform.value);
+      const dto = this.registerform.value as unknown as RequestProductDTO;
+      console.log("=========================>"+dto.brand);
       // const registrationData = this.prepareFormData(dto);
     }else{
       
