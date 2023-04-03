@@ -1,0 +1,29 @@
+<div class="addBrandflex">
+    <mat-card class="mat-card-brand">
+        <mat-card-title>Add Tax Class</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="registerform" (ngSubmit)="preprocess()">
+              <mat-form-field appearance="fill" class="inputField">
+                <mat-label>Tax Class Name</mat-label>
+                <input matInput formControlName="taxClassName" placeholder="Enter tax class name">
+              </mat-form-field>
+              
+
+              <!-- <section >
+                <mat-checkbox formControlName="checked"  [(ngModel)]="checked" >Active</mat-checkbox>
+              </section> -->
+              
+              <mat-divider></mat-divider>
+              <div class="btn">
+                  <button mat-raised-button color="primary">Submit</button>
+                  
+              </div>
+              
+            </form>
+        </mat-card-content>
+      </mat-card>
+    
+ 
+</div>
+
+  
