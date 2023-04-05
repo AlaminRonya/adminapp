@@ -3,13 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Brand } from 'src/app/interface/brand';
 import { Category } from 'src/app/interface/category';
 import { FileHandle } from 'src/app/interface/file-handle';
 import { RequestProductDTO } from 'src/app/interface/request-product-dto';
+import { TaxClassesDTO } from 'src/app/interface/tax-classes-dto';
 import { BrandServiceService } from 'src/app/service/brand-service.service';
 import { CategoryServiceService } from 'src/app/service/category-service.service';
+import { ProductServiceService } from 'src/app/service/product-service.service';
+import { TaxClassServiceService } from 'src/app/service/tax-class-service.service';
 
 @Component({
   selector: 'app-add-product',
@@ -35,8 +38,9 @@ export class AddProductComponent implements OnInit{
   
   brands: Brand[] = [];
   categories: Category[] = [];
+  taxClasses: TaxClassesDTO[] = [];
 
-  constructor(private builder : FormBuilder, private router: Router, private sanitizer: DomSanitizer, private brandService: BrandServiceService, private categoryService: CategoryServiceService ){}
+  constructor(private builder : FormBuilder, private router: Router, private sanitizer: DomSanitizer, private brandService: BrandServiceService, private categoryService: CategoryServiceService, private taxClassServiceService: TaxClassServiceService, private productService: ProductServiceService ){}
   ngOnInit(): void {
     this.brandService.getBrand().subscribe(
       (response) => {
@@ -52,6 +56,20 @@ export class AddProductComponent implements OnInit{
         this.categories.splice(0);
 
         this.categories = response.data.categories as Category[];
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+
+    this.taxClassServiceService.getAllTaxClass().subscribe(
+      (response) => {
+        this.taxClasses.splice(0);
+
+        this.taxClasses = response.data.taxClasses as TaxClassesDTO[];
+        for(var v of this.taxClasses){
+          console.log("===>"+v.basedOn);
+        }
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -90,8 +108,18 @@ export class AddProductComponent implements OnInit{
     if (this.registerform.valid){
       console.log(this.registerform.value);
       const dto = this.registerform.value as unknown as RequestProductDTO;
-      console.log("=========================>"+dto.brand);
-      // const registrationData = this.prepareFormData(dto);
+      const registrationData = this.prepareFormData(dto);
+      console.log('===>'+registrationData.get('dto'));
+      this.productService.addProduct(registrationData).pipe(
+        catchError((error: HttpErrorResponse) => {
+          alert(error.message);
+          return throwError(error);
+        })
+      ).subscribe((response: Response) => {
+        var d = JSON.parse(JSON.stringify(response));
+        alert("Insert success!" +  d['message']);
+      });
+
     }else{
       
     }

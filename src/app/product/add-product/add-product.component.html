@@ -34,8 +34,8 @@
             <mat-form-field appearance="fill" class="inputField1">
               <mat-label>Select Tax</mat-label>
               <mat-select formControlName="taxClass">
-                <mat-option *ngFor="let b of taxClass" [value]="b">
-                  {{b}}
+                <mat-option *ngFor="let b of taxClasses" [value]="b.basedOn">
+                  {{b.basedOn}}
                 </mat-option>
               </mat-select>
               <!-- <mat-select formControlName="taxClass">
