@@ -1,16 +1,43 @@
-import { Component, ViewChild } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
+import { Product } from 'src/app/interface/product';
+import { ProductServiceService } from 'src/app/service/product-service.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit{
+  
+  
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = [...ELEMENT_DATA];
   @ViewChild(MatTable) table: MatTable<PeriodicElement> | undefined;
 
+  products: Product[] = [];
+
+  constructor(private productService: ProductServiceService){}
+  ngOnInit(): void {
+    this.productService.getAllProduct().subscribe(
+      (response) => {
+        this.products.splice(0);
+
+        this.products = response.data.products as Product[];
+        
+        // console.log('Product: '+this.products[0].brand);
+        for(var v of this.products){
+          console.log('Product: '+v.attachmentDTOList[0].filename);
+        }
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+
+    
+  }
 
   // addData() {
   //   const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
